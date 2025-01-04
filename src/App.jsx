@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Watch from "./Watch"; // Import Watch component
+import Watch from "./watch"; // Import Watch component
 import Samurai from "./samurai.jsx";
 const App = () => {
   const [imagesrc, setimagesrc] = useState("");
