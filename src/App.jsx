@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Watch from "./Watch"; // Import Watch component
-
+import Samurai from "./samurai.jsx";
 const App = () => {
   const [imagesrc, setimagesrc] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isWatchPage, setIsWatchPage] = useState(false); // State to control rendering Watch page
+  const [issampage, setIsSam] = useState(false); // State to control rendering Watch page
 
   const handleMouseOver = (src, event) => {
     setimagesrc(src);
@@ -19,11 +20,17 @@ const App = () => {
     setIsWatchPage(true); // Set to true to render Watch component
   };
 
+  const bega = () => {
+    setIsSam(true);
+  };
+
   // If isWatchPage is true, render the Watch page, otherwise render the home page
   if (isWatchPage) {
     return <Watch />;
   }
-
+  if (issampage) {
+    return <Samurai />;
+  }
   return (
     <div>
       <h1 className="text-center text-blue-200 top-0 font-serif">
@@ -52,6 +59,7 @@ const App = () => {
             )
           }
           onMouseOut={handleMouseOut}
+          onClick={bega} // Handle click to navigate to Watch page
         >
           SAMURAI BATMAN
         </li>
@@ -64,6 +72,7 @@ const App = () => {
             )
           }
           onMouseOut={handleMouseOut}
+          onClick={handleListItemClick} // Handle click to navigate to Watch page
         >
           SMILE!!!!HA HA HA
         </li>
