@@ -1,17 +1,29 @@
 import React, { useState } from "react";
+import Watch from "./Watch"; // Import Watch component
+
 const App = () => {
   const [imagesrc, setimagesrc] = useState("");
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isWatchPage, setIsWatchPage] = useState(false); // State to control rendering Watch page
+
   const handleMouseOver = (src, event) => {
     setimagesrc(src);
     setPosition({ x: event.clientX, y: event.clientY });
   };
+
   const handleMouseOut = () => {
     setimagesrc("");
   };
-  const check = () => {
-    console.log("working");
+
+  const handleListItemClick = () => {
+    setIsWatchPage(true); // Set to true to render Watch component
   };
+
+  // If isWatchPage is true, render the Watch page, otherwise render the home page
+  if (isWatchPage) {
+    return <Watch />;
+  }
+
   return (
     <div>
       <h1 className="text-center text-blue-200 top-0 font-serif">
@@ -26,7 +38,8 @@ const App = () => {
               e,
             )
           }
-          onMouseOut={() => handleMouseOut()}
+          onMouseOut={handleMouseOut}
+          onClick={handleListItemClick} // Handle click to navigate to Watch page
         >
           BATMAN
         </li>
@@ -38,7 +51,7 @@ const App = () => {
               e,
             )
           }
-          onMouseOut={() => handleMouseOut()}
+          onMouseOut={handleMouseOut}
         >
           SAMURAI BATMAN
         </li>
@@ -50,20 +63,21 @@ const App = () => {
               e,
             )
           }
-          onMouseOut={() => handleMouseOut()}
+          onMouseOut={handleMouseOut}
         >
           SMILE!!!!HA HA HA
         </li>
       </ul>
+
       {imagesrc && (
         <img
           src={imagesrc}
           alt="Hovered"
-          className=" w-52  opacity-75 transform transition-all duration-300 p-2"
+          className="w-52 opacity-75 transform transition-all duration-300 p-2"
           style={{
-            top: `${position.y - 20}px`, // Add a slight offset to the Y position
-            left: `${position.x + 10}px`, // Add a slight offset to the X position
-            pointerEvents: "none", // Prevents the image from interfering with mouse events
+            top: `${position.y - 20}px`,
+            left: `${position.x + 10}px`,
+            pointerEvents: "none",
             position: "absolute",
           }}
         />
