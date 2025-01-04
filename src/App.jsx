@@ -32,11 +32,14 @@ const App = () => {
     return <Samurai />;
   }
   return (
-    <div>
-      <h1 className="text-center text-blue-200 top-0 font-serif">
-        Fun Design.
-      </h1>
-      <ul>
+    <div
+      className="bg-cover bg-center bg-no-repeat h-screen w-screen"
+      style={{
+        backgroundImage:
+          "url('https://images3.alphacoders.com/118/1185634.jpg')",
+      }}
+    >
+      <ul className="justify-center flex h-screen items-center">
         <li
           className="text-3xl font-mono hover:bg-orange-50 hover:text-black font-extrabold bg-red-300 w-screen"
           onMouseOver={(e) =>
